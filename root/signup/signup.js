@@ -4,6 +4,9 @@ let messageSent = false;
 socket.onmessage = (e) => {
     console.log(JSON.parse(e.data));
     messageSent = false;
+    if (JSON.parse(e.data).success) {
+        window.location = "/login/";
+    }
 };
 
 document.getElementById("submit").addEventListener("click", () => {

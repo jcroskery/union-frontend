@@ -2,8 +2,10 @@ let socket = new WebSocket("wss://" + location.host + "/ws/creategallery");
 let messageSent = false;
 
 socket.onmessage = (e) => {
-    console.log(JSON.parse(e.data));
     messageSent = false;
+    if (JSON.parse(e.data).success) {
+        window.location.reload();
+    }
 };
 
 document.getElementById("submit").addEventListener("click", () => {
